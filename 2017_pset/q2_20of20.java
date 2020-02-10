@@ -2,7 +2,7 @@ package ccc_2019;
 
 import java.util.Scanner;
 import java.util.Arrays;
-
+import java.lang.StringBuilder;
 /**
  *
  * @author William Law
@@ -32,19 +32,20 @@ public class Main {
                 n_out += out[out.length-i] + " ";
             }
         } else {
-            for (int i=1; i<measurements.length/2+2; i++) {
-                if (i == measurements.length) {
-                    rev_out += measurements[i-1] + " ";
-                    break;
-                }
-                rev_out += measurements[measurements.length-i] + " " + measurements[i-1] + " ";
+            for (int i=1; i<measurements.length/2+1; i++) {
+                rev_out += measurements[i-1] + " " + measurements[measurements.length-i] + " ";
             }
             
             String[] out = rev_out.split("\\s+");
             
             for (int i=1; i<out.length+1; i++) {
                 n_out += out[out.length-i] + " ";
-            }            
+            }
+            
+            StringBuilder _s = new StringBuilder(n_out);
+            
+            _s.insert(0, "" + measurements[measurements.length/2] + " ");
+            n_out = _s.toString();
         }
         
         System.out.println(n_out);
